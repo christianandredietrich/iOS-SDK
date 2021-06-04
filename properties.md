@@ -277,8 +277,8 @@ point rather than the exact target position provided in the seekToAdjustedTime A
 
 Setting this value is a kind of option for the seekToAdjustedTime API and can be used to minimize the time required to seek in content by taking advantage of Random Access points in the content. A Random Access point is a specific position that the parser is allowed to seek to directly.
 
-This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equalsmsec(milliseconds), the first parameter in the seek() API.
-If the exact parameter, the second parameter in the seekToAdjustedTime API, istrueand the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
+This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equals msec(milliseconds), the first parameter in the seek() API.
+If the exact parameter, the second parameter in the seekToAdjustedTime API, is true and the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
 
 For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and there is a Random Access point at 7000 ms, if this property is set to less than 3000 ms, the player will ignore the exact target value and will instead play from 7000 ms. On the other hand, if this property is set to more than 3000 ms, then NexPlayer will seek exactly to 10000 ms and begin playback.
 
@@ -290,7 +290,7 @@ For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and ther
 
 ### NXPropertySetToSkipBFrame 
 
-If set totrue, unconditionally skips all B-frames without decoding them.
+If set to true, unconditionally skips all B-frames without decoding them.
 
 - Type: boolean 
 - Default: 0
