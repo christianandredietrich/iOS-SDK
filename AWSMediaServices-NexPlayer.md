@@ -130,14 +130,14 @@ Elemental MediaConvert. You created a new S3 bucket which hosted your
 input video file and your output Mpeg Dash manifest.
 
 In this section, you will use AWS Elemental MediaConvert to create an
-HLS stream from the same input video file. You will then learn how to use AWS Elemental MediaPackage to package and stream avideo file with an automatic CloudFront distribution.
+HLS stream from the same input video file. You will then learn how to use AWS Elemental MediaPackage to package and stream a video file with an automatic CloudFront distribution.
 
 We will be utilizing this VOD Static File flow:
 
 Amazon S3 -> AWS Elemental MediaConvert -> Amazon S3 ->
 AWS Elemental MediaPackage -> Amazon CloudFront ->NexPlayer
 
-The **new** key components over the static file processare:
+The **new** key components over the static file process are:
 
 
 1. HLS stream encoding support. We will again utilize AWS Elemental
@@ -263,12 +263,12 @@ Now we need a CDN to host the stream. We will be using Amazon CloudFront again. 
     - We will Use Only U.S., Canada, and Europe
     - You can use any price class you like.
 7. Click “ _Create Distribution_ ”
-8. Now, to build the URL for your asset, navigate toAssets.
+8. Now, to build the URL for your asset, navigate to Assets.
     - Click on your new video asset to reveal the URL
     - Copy the portion of the url after the domain name that you set up.
        This is the “video name” or “path” and is the partof the url after
        amazonaws.com
-    - Now, get the CloudFront URL for your new distributionand combine it with the “video name”
+    - Now, get the CloudFront URL for your new distribution and combine it with the “video name”
 		- https://{cloudfronturl}/{videoname}
 
 #### Your Project
@@ -538,7 +538,7 @@ You can learn more about our Ad Decision Server [here](https://aws.amazon.com/bl
 
 ##### AWS Elemental MediaTailor
 
-Now that you have packaged your file for distribution,let’s learn how to place
+Now that you have packaged your file for distribution, let’s learn how to place
 ads within the distribution using [AWS Elemental MediaTailor](https://aws.amazon.com/mediatailor/).
 
 1. Click Create configuration
@@ -625,7 +625,7 @@ Guide: “OBS Studio to AWS Elemental MediaLive to AWS”.
 
 Now it’s time to start the stream.
 
-1. In AWS Elemental MediaLive, on the Channels page,choose the radio
+1. In AWS Elemental MediaLive, on the Channels page, choose the radio
     button next to your new channel.
     - The buttons along the top are enabled.
 2. Choose Start.
@@ -644,5 +644,5 @@ https://{cloudfronturl}/{videoname}
 
 #### Conclusion
 
-Thank you for going through our guide on how to setup Live Streams for your
+Thank you for going through our guide on how to set up Live Streams for your
 assets using AWS Media Services and NexPlayer.
