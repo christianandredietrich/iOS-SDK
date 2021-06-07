@@ -188,21 +188,18 @@ Live playback option.
  - Default: NXPropertyHLSLiveViewRecent
  - Values:
  
-  - **NXPropertyHLSLiveViewRecent (0x00000000)** Start playback from the most recently received me-
-dia segment (.ts) files of the HLS live playlist. (The player will begin playback at a media segment
+  - **NXPropertyHLSLiveViewRecent (0x00000000)** Start playback from the most recently received media segment (.ts) files of the HLS live playlist. (The player will begin playback at a media segment
 that was loaded four(4) segments earlier than the latest media segment file loaded.) For example,
 if 5.ts is the latest media segment (.ts) file loaded in a sequence of five media segments, playback
 will begin at the beginning of the second media segment, four segments (2.ts, 3.ts, 4.ts, and 5.ts)
 preceding the latest media segment file loaded.
  
-  - **NXPropertyHLSLiveViewRecentByTargetDuration (0x00000001)** Start playback from the most re-
-cently received media segement (.ts) files, based on the value set for the EXT-X-TARGETDURATION
-tag in the HLS live playlist. (The player will begin playback at the media segment that is immediately precedes the media segment that isthree times (x3) the target durationbefore the latest media segment file loaded.) As a concrete example, if the target duration is set to 12 seconds and the total duration of currently loaded media segments is 48 seconds, playback will begin at the media file that immediately precedes the media segment with the timestamp at 12 (48-36) seconds. If this example HLS playlist includes media segment files 1.ts (duration of 10 seconds), 2.ts (9 sec), 3.ts (11 sec), 4.ts (10 sec), and 5.ts (8 sec), then playback will begin at the first media segment, 1.ts, because it immediate precedes the 2.ts segment (where the timestamp at 12 seconds occurs).
+  - **NXPropertyHLSLiveViewRecentByTargetDuration (0x00000001)** Start playback from the most recently received media segment (.ts) files, based on the value set for the EXT-X-TARGETDURATION
+tag in the HLS live playlist. (The player will begin playback at the media segment that is immediately precedes the media segment that is three times (x3) the target duration before the latest media segment file loaded.) As a concrete example, if the target duration is set to 12 seconds and the total duration of currently loaded media segments is 48 seconds, playback will begin at the media file that immediately precedes the media segment with the timestamp at 12 (48-36) seconds. If this example HLS playlist includes media segment files 1.ts (duration of 10 seconds), 2.ts (9 sec), 3.ts (11 sec), 4.ts (10 sec), and 5.ts (8 sec), then playback will begin at the first media segment, 1.ts, because it immediate precedes the 2.ts segment (where the timestamp at 12 seconds occurs).
 
   - **NXPropertyHLSLiveViewFirst (0x00000002)** Unconditionally start HLS playback from the first entry in the HLS playlist.
 
-  - **NXPropertyLiveViewLowLatency (0x00000003)** Playback begins as close to the live edge as pos-
-sible. The first file to load is the last segment in the playlist. (Do not use this option for normal
+  - **NXPropertyLiveViewLowLatency (0x00000003)** Playback begins as close to the live edge as possible. The first file to load is the last segment in the playlist. (Do not use this option for normal
 playback.)
  
 
@@ -277,8 +274,8 @@ point rather than the exact target position provided in the seekToAdjustedTime A
 
 Setting this value is a kind of option for the seekToAdjustedTime API and can be used to minimize the time required to seek in content by taking advantage of Random Access points in the content. A Random Access point is a specific position that the parser is allowed to seek to directly.
 
-This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equalsmsec(milliseconds), the first parameter in the seek() API.
-If the exact parameter, the second parameter in the seekToAdjustedTime API, istrueand the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
+This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equals msec(milliseconds), the first parameter in the seek() API.
+If the exact parameter, the second parameter in the seekToAdjustedTime API, is true and the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
 
 For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and there is a Random Access point at 7000 ms, if this property is set to less than 3000 ms, the player will ignore the exact target value and will instead play from 7000 ms. On the other hand, if this property is set to more than 3000 ms, then NexPlayer will seek exactly to 10000 ms and begin playback.
 
@@ -290,7 +287,7 @@ For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and ther
 
 ### NXPropertySetToSkipBFrame 
 
-If set totrue, unconditionally skips all B-frames without decoding them.
+If set to true, unconditionally skips all B-frames without decoding them.
 
 - Type: boolean 
 - Default: 0
@@ -485,7 +482,7 @@ If this property is set to 1, the player will attempt to choose only tracks that
 
 ### NXPropertyEnableTrackdown 
 
-Allows NexPlayer to switch to a lower bandwidth track if the resolution or bitrate of the current track is too high for the device to play smoothly. Under normal operation, NexPlayer switches tracks based solely on current network conditions. When this property is enabled, NexPlayer will also switch to a lower bandwith track if too many frames are skipped during playback.
+Allows NexPlayer to switch to a lower bandwidth track if the resolution or bitrate of the current track is too high for the device to play smoothly. Under normal operation, NexPlayer switches tracks based solely on current network conditions. When this property is enabled, NexPlayer will also switch to a lower bandwidth track if too many frames are skipped during playback.
 
 This is useful for content that is targeted for a variety of devices, some of which may not be powerful
 enough to handle the higher quality streams.
@@ -502,7 +499,7 @@ Have to set it before start to play.
  
 ### NXPropertyTrackdownVideoRatio 
 
-Controls the ratio of skipped frames that will be tolerated before a track change is forced, if NXPropertyEnableTrackdown is enabled. The formula used to determined if a track switch is necessary is:
+Controls the ratio of skipped frames that will be tolerated before a track change is forced, if NXPropertyEnableTrackdown is enabled. The formula used to determine if a track switch is necessary is:
 
 ```
 (^100) *(RenderedFrames / DecodedFrames) < TrackdownVideoRatio
@@ -518,12 +515,12 @@ A performance-based track switch **permanently** limits the maximum bandwidth of
 
 ### NXPropertyHLSRunmode 
 
-Controls the alogrithm used for bitrate switching when playing an HLS stream.
+Controls the algorithm used for bitrate switching when playing an HLS stream.
 
 - Type: unsigned int
 - Default: 0
 - Values:
- - 0: Uses a more agressive algorithm: Up-switching happens sooner.
+ - 0: Uses a more aggressive algorithm: Up-switching happens sooner.
  - 1: Uses a more conservative algorithm: Up-switching happens only if a significant amount of extra bandwidth is available beyond that required to support the given bitrate. This is similar to the iPhone algorithm.
 
 ### NXPropertyHTTPCredentials 
@@ -540,7 +537,7 @@ The particulars of the headers depend on the server and the authentication metho
  
 ### NXPropertyMinBufferRate 
 
-The minumum ratio of prefetch buffer to resume filling buffer. If the ratio of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
+The minimum ratio of prefetch buffer to resume filling buffer. If the ratio of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
  
 - Type: unsigned integer
 - Unit: percent
@@ -556,7 +553,7 @@ The maximum ratio of prefetch buffer to pause filling buffer. If the ratio of fi
 
 ### NXPropertyMinBufferDuration 
 
-The minumum duration of prefetch buffer to resume filling buffer. If the duration of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
+The minimum duration of prefetch buffer to resume filling buffer. If the duration of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
 
 - Type: unsigned integer
 - Unit: second
@@ -564,7 +561,7 @@ The minumum duration of prefetch buffer to resume filling buffer. If the duratio
 
 ### NXPropertyMaxBufferDuration 
 
-The minumum ratio of prefetch buffer to resume filling buffer. If filling buffer is less this value, filling buffer will be resumed until buffer status meets only the condition of `MIN_BUFFER_DURATION`. 
+The minimum ratio of prefetch buffer to resume filling buffer. If filling buffer is less this value, filling buffer will be resumed until buffer status meets only the condition of `MIN_BUFFER_DURATION`. 
  
 - Type: unsigned integer
 - Unit: second
@@ -741,7 +738,7 @@ By default, this property is set to 0 to download the first TS file completely t
 
 Allows custom ID3 tags added to timed metadata in content to be recognized and handled by NexPlayer. When customized ID3 tags with additional information have been added to the timed metadata in content, this property can be used to help NexPlayer recognize and pass those ID3 tags and the extra information they contain to an application.
 
-This property must be setbeforeopenis called.
+This property must be set before open is called.
 
 - Type: String
 - Values: a list of the customized ID3 tag names separated by semicolons (;)
@@ -753,7 +750,7 @@ Sets whether or not to display TTML text tracks in ID3 tag automatically when th
 
 By default, this property is set to 0 to disable TTML text tracks in ID3 tag automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that
 
-TTML captions in ID3 tag to be displayed instead of the CEA closed captions text tracks, this property should be set to 1 usingsetProperty:This property should only be called once, immediately after calling `init` but before calling `open`.
+TTML captions in ID3 tag to be displayed instead of the CEA closed captions text tracks, this property should be set to 1 using setProperty:This property should only be called once, immediately after calling `init` but before calling `open`.
 
 - Type: boolean
 - Default: 0
@@ -800,7 +797,7 @@ To set the preferred language for both audio and text streams to the same langua
 
 Sets the language to use for text in multi-stream content, before content is played.
 
-This property can be used to set the preferred language of text streams to be displayed in content,before NexPlayer begins playing content.
+This property can be used to set the preferred language of text streams to be displayed in content, before NexPlayer begins playing content.
  
 This property should be set by calling `setProperty:` after `init` and before `open`
 is called.
@@ -809,7 +806,7 @@ is called.
  - Default: null
  - Values: Accurate language labels asStrings. For example, "eng" for English.
 
-> **Warning** To change any media streamwhilecontent is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead. To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
+> **Warning** To change any media stream while content is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead. To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
 
 
 > **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
@@ -820,7 +817,7 @@ Avoids waiting for the first WebVTT segment to download when starting to play co
 
 However, if this property is disabled (set to 0), the player will start playing content as soon as possible (instead of waiting until the first WebVTT segment is fully downloaded). This may be preferred if content should start playing as quickly as possible (although initial WebVTT text may be missed).
 
-This property should be called once, immediately after callinginitbut before callingopen.
+This property should be called once, immediately after calling init but before calling open.
 
 - Type: boolean
 - Default: 1
@@ -923,7 +920,7 @@ If playback is out of sync than this value, the player will jump to synchronize 
 
 ### NXPropertySetHWdecoderPixelFormat 
 
-Sets iOS HW decoder pixel foramt of output property (kCVPixel-
+Sets iOS HW decoder pixel format of output property (kCVPixel-
 BufferPixelFormatTypeKey). This property is to set a pixel format for decoded video format. Have to set it before start to play.
 
 > **Warning** Don’t use general play if you use this property for general play. If you don’t use it properly, the video will not display normally.
@@ -1061,7 +1058,7 @@ This property sets whether CEA 608 closed captions should be rendered in caption
 
 \#define NXDuration_Unknown (0xFFFFFFFFU)
 
-For live streams where duration of content cannot be determined, this type can be passed in place ofNXDuration.
+For live streams where duration of content cannot be determined, this type can be passed in place of NXDuration.
 
 ### Typedefs
 
@@ -1903,7 +1900,7 @@ typedef void ∗ NXFileHandle
 
 Mode for opening a file.
 
-Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
+Identifies different methods for opening or creating a file. This is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
 
 ```
 typedef enum NXFileMode_ NXFileMode
@@ -1917,7 +1914,7 @@ typedef enum NXFileMode_ NXFileMode
 
 Origin when seeking within a file.
 
-Identifies different origins for seeking within a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
+Identifies different origins for seeking within a file. This is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
 
 ```
 typedef enum NXFileSeekOrigin_ NXFileSeekOrigin
@@ -2006,8 +2003,8 @@ This enumeration defines the possible options for the setVideoBitrates:len:withO
 
 **Enumerator**
 
-- `NexAvailableBitrateNone` No restriction on subtracks other than the bitrates selected inbitrates.
-- `NexAvailableBitrateMatch` Only use subtracks which have exact same bitrate as the selected bitrates passed inbitrates.
+- `NexAvailableBitrateNone` No restriction on subtracks other than the bitrates selected in bitrates.
+- `NexAvailableBitrateMatch` Only use subtracks which have exact same bitrate as the selected bitrates passed in bitrates.
 - `NexAvailableBitrateNearest` Only use subtracks which have the nearest bitrates to the target bitrates.
 - `NexAvailableBitrateHigh` Only use subtracks which have bitrates equal to or higher than the target bitrate.
 - `NexAvailableBitrateLow` Only use subtracks which have bitrates equal to or lower than the target bitrate.
@@ -2037,7 +2034,7 @@ This enumeration defines the possible options for the NXPlayerABRController:: se
 
 ### enum NexDynamicThumbnailOption
 
-This enumeration defines IDs for the possible options when handling Dynamic Thumbnail information in HLS & Smooth Streaming content. These are possible values for theuIdparameter in `NxPlayer::setOptionDynamicThumbnailwithOption: andParam1: andParam2:`.
+This enumeration defines IDs for the possible options when handling Dynamic Thumbnail information in HLS & Smooth Streaming content. These are possible values for the uId parameter in `NxPlayer::setOptionDynamicThumbnailwithOption: andParam1: andParam2:`.
 
 ### enum NexHLSTSDescrambleResult
 
@@ -2233,7 +2230,7 @@ File formats. These are possible file format values that can be used forNXConten
 
 ### enum NXFileMode_
 
-Mode for opening a file. Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
+Mode for opening a file. Identifies different methods for opening or creating a file. This is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
 
 **See Also**
 
@@ -2248,7 +2245,7 @@ NXRemoteFileIOInterface for more details.
 
 ### enum NXFileSeekOrigin_
 
-Origin when seeking within a file. Identifies different origins for seeking within a file. This is is passed to implementations of theNXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
+Origin when seeking within a file. Identifies different origins for seeking within a file. This is passed to implementations of theNXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
 
 **See Also**
 
