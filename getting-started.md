@@ -61,7 +61,7 @@ window:
 }
 ```
 
-That’s all there is to it; just make sure your HLS media URL, "http://your.media.com/index.m3u8" for example, is availble on the network and this simple program will load and play that content.
+That’s all there is to it; just make sure your HLS media URL, "http://your.media.com/index.m3u8" for example, is available on the network and this simple program will load and play that content.
 
 > **Warning** Bitcode is not supported yet. To disable Bitcode, the build option Enable Bitcode in the Build Settings of the target of your App should be set to No.
 
@@ -116,8 +116,7 @@ If you want audio to continue playing, you will need to prevent the app from com
 
 ## DRM Descrambling
 
-NexPlayer supports DRM descrambling by allowing the application to assign one or more descramblers to mem-
-bers of NXPlayer.
+NexPlayer supports DRM descrambling by allowing the application to assign one or more descramblers to members of NXPlayer.
 
 A descrambler can be the same as the NXPlayerDelegate, or can be a dedicated descrambling object.
 
