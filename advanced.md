@@ -172,7 +172,7 @@ When registered, this callback function is called every time AES128 encrypted HL
 | Name  | Description  | 
 |---|---|
 |pInBuf| A pointer to the input buffer.|
-|dwInBufSize |The size of the input buffer, inbytes.|
+|dwInBufSize |The size of the input buffer, in bytes.|
 |pOutBuf| A pointer to the output buffer where decrypted content is stored.|
 |pdwOutBufSize| A pointer to the size of the decrypted segment, in bytes.|
 |pSegmentUrl| A pointer to the URL of the segment of content.|
@@ -357,7 +357,7 @@ The actual number of bytes to read is (uiSize∗uiCount).
 
 **Returns**
 
-- >0: The number ofbytesactually read
+- >0: The number of bytes actually read
 - 0: Reached the end of the file.
 - -1: An error occurred.
 
@@ -468,7 +468,7 @@ Callback function for descrambling HLS-TS encrypted content (HTTP Live Streaming
 |pOutputBuffer| The location at which to place the descrambled output data. This may point to the same location as the input buffer, or it may point to a separate location. The size available for the output buffer is the same as the size of the input buffer. That is, the decrypted data may be smaller than the encrypted data, but not larger.|
 |puiOutputBufferSize| The size of the decrypted data. The callback must set this value. This may be equal to or smaller than uiInputBufferSize, but not larger.|
 |pMediaFileURL| The URL of the segment media file (TS file or audio file).|
-|pPlaylistURL| The URL of the immediate parent playlist (the playlist directly referecing the media file).|
+|pPlaylistURL| The URL of the immediate parent playlist (the playlist directly referencing the media file).|
 |pUserData| The user data passed when the callback was originally registered.|
 
 **Returns**
@@ -666,7 +666,7 @@ This method sets whether or not to have more than 2 audio channels (i.e. 5.1 cha
 
 #### - (NXPlayer *) player [read], [nonatomic], [weak]
 
-The NXPlayer instance passed in to initWithPlayer:delegate.
+The NXPlayer instance passed into initWithPlayer:delegate.
 
 ### NexAudioPostProcessingAdapterDelegate Protocol Reference
 
@@ -1104,7 +1104,7 @@ In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to 
 
 This property sets the background color.
 
-If this value isnil, the background color will be rendered in the default content defined value or transparent if it is not defined.
+If this value is nil, the background color will be rendered in the default content defined value or transparent if it is not defined.
 
 #### - (CGFloat) backgroundColorOpacity [read], [write], [nonatomic], [assign]
 
@@ -1195,7 +1195,7 @@ Default value is NXTriState_Default.
 
 This property sets the fontName.
 
-If the value isnil, font will be rendered in the default content defined value or system font if it is not defined.
+If the value is nil, font will be rendered in the default content defined value or system font if it is not defined.
 
 > **Note** The possible value will be the one of value in [UIFont familyNames]. 
 
@@ -1248,7 +1248,7 @@ NXCaptionAttribute::NXHorizontalAlignment
 
 This property sets the shadow or edge color.
 
-If this value isnil, the shadow or edge style of the caption text will be rendered in default content defined value or transparent if it is not defined.
+If this value is nil, the shadow or edge style of the caption text will be rendered in default content defined value or transparent if it is not defined.
 
 > **Note** To ensure that the chosen edge styles are displayed, set `shadowColor` to the desired color value, taking into account the colors of the font/background and font/shadow color opacity (`fontColor` and `backgroundColor`, `fontColorOpacity`, `shadowColorOpacity`).
 
@@ -1278,7 +1278,7 @@ NXCaptionAttribute::NXVerticalAlignment
 
 This property sets the window color.
 
-If the value isnil, the window color will be rendered in the default content defined value or transparent if it is not defined.
+If the value is nil, the window color will be rendered in the default content defined value or transparent if it is not defined.
 
 > **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
@@ -1423,7 +1423,7 @@ This property as well as rollupBaseRow can be used to position the rows rolling 
 
 The time (milliseconds) that has passed since the start of the most recent rollup operation.
 
-In order to animate the rolling up of captions when they are to be displayed in "roll up" mode, this value can be used to determine where to display the rows of text being rolled-up (including the the row of text being "rolled out" of view into row -1).
+In order to animate the rolling up of captions when they are to be displayed in "roll up" mode, this value can be used to determine where to display the rows of text being rolled-up (including the row of text being "rolled out" of view into row -1).
 
 Based on this number and the amount of time to be taken to roll the rows up to the next position, the rows of captions can be displayed in progressively higher positions until the animation is finished and the new caption can begin to be displayed in the base row.
 
@@ -1457,7 +1457,7 @@ Please see NXCEA608Caption for more information about CEA 608 closed captions.
 
 CEA-608 caption cell information.
 
-This structure is used by to store CEA 608 closed caption cell information and is passed to `NXCEA608CaptionView` to be displayed.
+This structure is used to store CEA 608 closed caption cell information and is passed to `NXCEA608CaptionView` to be displayed.
 
 **Public Attributes**
 
@@ -1501,7 +1501,7 @@ The string should be displayed in a fixed-pitch font for best results.
 
 **Returns**
 
-the content information formatted as astring.
+the content information formatted as a string.
 
 #### - (NSArray∗) streamsOfType: (NXMediaType) type
 
@@ -2590,7 +2590,7 @@ In the event of an error (for example, an invalid property identifier), an excep
 
 This is the value as set with `setProperty:toValue:`
 
-For a few properties, the actual value in effect may be different (for example, it a property is set to a default that varies based on the protocol or device). If the actual value is needed, `getEffectiveProperty:` can be called.
+For a few properties, the actual value in effect may be different (for example, if a property is set to a default that varies based on the protocol or device). If the actual value is needed, `getEffectiveProperty:` can be called.
 
 See Properties for details.
 
@@ -2672,7 +2672,7 @@ Normally, when playing live content, previously recorded data (for example, a fe
 
 | i/o  | Name  | Description  | 
 |---|---|---|
-| in | exact | If exactis YES, the player will seek exactly to the time specified by msec. Otherwise, the playhead will seek to the nearest approximate position for faster seeking performance |
+| in | exact | If exact is YES, the player will seek exactly to the time specified by msec. Otherwise, the playhead will seek to the nearest approximate position for faster seeking performance |
 
 **Returns**
 
@@ -3133,7 +3133,7 @@ This method doesn’t work if it is called when NexPlayer is stopped.
 |---|---|
 | playRate | This float represents the rate by which to change the playback rate. It must be in the range of 0.1 to 4.0, which adjusts the playback speed from 0.1x to 4x the original speed of the content with HW decoder. It must be in the range of 0.1 to 2.0, which adjusts the playback speed from 0.1x to 2x the original speed of the content with SW decoder. It must be in the range of 0.5 to 2.0, when you use AirPlay mode. (isAirPlayActive is YES) |
 
-> **Warning** When using this method with HLS or Smooth Streaming content, playing multitrack content may cause unstable performance. Therefore, playing content as a single track is encouraged. When using this method with Live content, beffering may occur more frequently.
+> **Warning** When using this method with HLS or Smooth Streaming content, playing multitrack content may cause unstable performance. Therefore, playing content as a single track is encouraged. When using this method with Live content, buffering may occur more frequently.
 
 #### - (NXError) setProperty: (NXProperty)propertytoValue:(NSInteger)value
 
@@ -3321,7 +3321,7 @@ The result value.
 
 An object that conforms to `NXAsfPlayReadyDescrambler` that will handle PlayReady ASF descrambling.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble PlayReady encrypted ASF content before NexPlayer decodes and plays
 that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
@@ -3374,7 +3374,7 @@ See the `NXContentInfo` class for details on the information that is available.
 
 The first time that content information becomes available, and any time there after that the content information has been updated, the `nexPlayerDidUpdateContentInfo: (NXPlayerDelegate-p)` method will be called on the delegate.
 
-In addition, when the asynchronous open command has completed and the `nexPlayer:completedAsyncCmdOpenWithResult:playbackType: (NXPlayerDelegate-p)` method on the delegate is called, content information will be available (unless the open command failed).
+In addition, when the asynchronous open command has been completed and the `nexPlayer:completedAsyncCmdOpenWithResult:playbackType: (NXPlayerDelegate-p)` method on the delegate is called, content information will be available (unless the open command failed).
 
 The content info object is re-created any time that the content information is updated (the object is never updated in-place). If the application has retained a previous content information object, that older object will remain valid (albeit obsolete) until the application releases it.
 
@@ -3645,7 +3645,7 @@ This property provides the current name of the SDK in use, which may be helpful 
 
 The current seekable length.
 
-If content is seekable, this property provides the length of the portion of the content that is seekable. While this will be the entire length of a local seekable file, or the downloaded portion of a progressively downloaded file, this value may also be used with seekBaseto determine which portion of a live stream is within the seekable window.
+If content is seekable, this property provides the length of the portion of the content that is seekable. While this will be the entire length of a local seekable file, or the downloaded portion of a progressively downloaded file, this value may also be used with seekBase to determine which portion of a live stream is within the seekable window.
 
 For more information, please see the introductory section on server-side timeshifting.
 
@@ -3791,9 +3791,9 @@ However, if this is not an option, another method is to heuristically check the 
 
 where each of these fields is a two-character uppercase code, and country may be omitted. For example:
 
-- ENUSCC English, United State, Closed Caption
+- ENUSCC English, United States, Closed Caption
 - KRCC Korean, Closed Caption
-- FRFRCCFrench, France, Closed Caption
+- FRFRCC French, France, Closed Caption
 
 Therefore, it is possible to check if the language string is a 4- or 6-letter uppercase code, and if so, to parse it for language and country. The language generally an ISO 639 short (two-character) language code, and the country is generally an ISO 3166-1 two-character country code.
 
@@ -3805,7 +3805,7 @@ If a given string is not recognized by the application, it is generally best to 
 
 An object that conforms to `NXWMDRMDescrambler` that will handle WM-DRM descrambling.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble WM-DRM encrypted content before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3874,7 +3874,7 @@ This method sets the minimum bandwidth for streaming content in NexPlayer, dynam
 
 **Warning**
 
-To dynamically change the minimum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after callin gopen. Note that the minimum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMinBW`, with `changeMinBandwidth`.
+To dynamically change the minimum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after calling open. Note that the minimum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMinBW`, with `changeMinBandwidth`.
 
 This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the minimum bandwidth when determining whether a track change is appropriate, even if it detects less bandwidth available.
 
@@ -4008,7 +4008,7 @@ Delegate protocol for `NXPlayer`.
 
 Any class that will receive events from a `NXPlayer` instance as a delegate should implement this protocol.
 
-All methods are optional; implement the methods for events which you wish the delegate to handle.
+All methods are optional; implement the methods for events that you wish the delegate to handle.
 
 NXPlayerDelegate::nexPlayer:willBeSentEvent:withArgs: is a special method that can be used to trap all events, and which can filter events before they are passed to other event handling methods.
 
@@ -4058,7 +4058,7 @@ Buffering has progressed and the percentage complete has changed.
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdMediaOnOffWithResult:(NXError)result mediaType:(NXMediaType)mediaTypebOnOff:(BOOL)bOnOff
 
-An asynchronous media on/off operation has completed.
+An asynchronous media on/off operation has been completed.
 
 This method is called when the media on/off operation initiated by `setMediaOnOff:mediaType: (NXPlayer)` has
 completed.
@@ -4077,9 +4077,9 @@ completed.
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdOpenWithResult:(NXError)result playbackType:(NXPlaybackType)type
 
-An asynchronous open operation has completed.
+An asynchronous open operation has been completed.
 
-This method is called when an open operation started by `open:mode:subtitles:transport:autoPlay: (NXPlayer)` (or one of the related convenience functions) has completed.
+This method is called when an open operation started by `open:mode:subtitles:transport:autoPlay: (NXPlayer)` (or one of the related convenience functions) has been completed.
 
 If autoPlay was set to YES when the open command was issued, the player will automatically call `start (NXPlayer)` to begin playback; otherwise, the delegate will need to start playback explicitly by calling that same method.
 
@@ -4097,9 +4097,9 @@ If autoPlay was set to YES when the open command was issued, the player will aut
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdPauseWithResult:(NXError)result
 
-An asynchronous *pause* operation has completed.
+An asynchronous *pause* operation has been completed.
 
-This method is called when the pause operation initiated by `pause (NXPlayer)` has completed.
+This method is called when the pause operation initiated by `pause (NXPlayer)` has been completed.
 
 > **Note** If you call `pause (NXPlayer)` during a seek operation, no pause command is actually issued. Rather, the seek operation that is in progress is modified to leave the player in a paused state upon completion. In this case, because the pause command is not actually issued, no completion event will occur. You can detect this case by checking the value of `NXPlayer::seeking` just before calling `pause (NXPlayer)`.
 
@@ -4112,9 +4112,9 @@ This method is called when the pause operation initiated by `pause (NXPlayer)` h
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdResumeWithResult:(NXError)result
 
-An asynchronous *resume* operation has completed.
+An asynchronous *resume* operation has been completed.
 
-This method is called when the resume operation initiated by `resume (NXPlayer)` has completed.
+This method is called when the resume operation initiated by `resume (NXPlayer)` has been completed.
 
 **Note** If you call `resume (NXPlayer)` during a seek operation, no resume command actually issued. Rather, the seek operation that is in progress is modified to leave the player in a playing state upon completion. In this case, because the resume command is not actually issued, no completion event will occur. You can detect this case by checking the value of `NXPlayer::seeking` just before calling `resume (NXPlayer)`.
 
@@ -4127,9 +4127,9 @@ This method is called when the resume operation initiated by `resume (NXPlayer)`
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSeekWithResult:(NXError)result
 
-An asynchronous *seek* operation has completed.
+An asynchronous *seek* operation has been completed.
 
-This method is called when the seek operation initiated by NXPlayer::seek has completed.
+This method is called when the seek operation initiated by NXPlayer::seek has been completed.
 
 > **Note** If you call seekTo: (NXPlayer) while a seek operation is already in progress, it just modifies the target of the current seek operation. No new seek operation is started, and therefore, only one single completion event will be generated.
 
@@ -4142,7 +4142,7 @@ This method is called when the seek operation initiated by NXPlayer::seek has co
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetExternalSubtitleWithResult:(NXError)result
 
-An asynchronous *forward* operation has completed.
+An asynchronous *forward* operation has been completed.
 
 > **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements the forward command, and this event can therefore never occur. It may be supported in future versions, so you should not write code
 > that processes this event at present (otherwise that code may break in the future).
@@ -4152,7 +4152,7 @@ An asynchronous *forward* operation has completed.
 | i/o | Name  | Description  | 
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
-| in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). An asynchronous backwards operation has completed. |
+| in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). An asynchronous backwards operation has been completed. |
 
 > **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements the backwards command, and this event can therefore never occur. It may be supported in future versions, so you should not write code that processes this event at present (otherwise that code may break in the future).
 
@@ -4161,9 +4161,9 @@ An asynchronous *forward* operation has completed.
 | i/o | Name  | Description  | 
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
-| in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). An asynchronous `setExternalSubtitle` operation has completed.
+| in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). An asynchronous `setExternalSubtitle` operation has been completed.
 
-This method is called when the pause operation initiated by NXPlayer::setExternalSubtitle has completed.
+This method is called when the pause operation initiated by NXPlayer::setExternalSubtitle has been completed.
 
 **Parameters**
 
@@ -4173,9 +4173,9 @@ This method is called when the pause operation initiated by NXPlayer::setExterna
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetMediaStreamWithResult:(NXError)result streamInfo:(NXMediaStreamInfo ∗ )stream
 
-An asynchronous media stream switching operation has completed.
+An asynchronous media stream switching operation has been completed.
 
-This method is called when the media stream switching operation initiated by setVideoStream:audioStream:textStream:trackAttributes: (NXPlayer) or setVideoStream:audioStream:trackAttributes: (NXPlayer) has completed.
+This method is called when the media stream switching operation initiated by setVideoStream:audioStream:textStream:trackAttributes: (NXPlayer) or setVideoStream:audioStream:trackAttributes: (NXPlayer) has been completed.
 
 **Parameters**
 
@@ -4186,7 +4186,7 @@ This method is called when the media stream switching operation initiated by set
 
 #### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdStartWithResult:(NXError)result playbackType:(NXPlaybackType)type
 
-An asynchronous *start* operation has completed.
+An asynchronous *start* operation has been completed.
 
 This method is called when playback has started (or failed irrecoverably) after a call to start (NXPlayer).
 
@@ -4200,9 +4200,9 @@ This method is called when playback has started (or failed irrecoverably) after 
 
 #### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdStopWithResult:(NXError)result
 
-An asynchronous *stop* operation has completed.
+An asynchronous *stop* operation has been completed.
 
-This method is called when the stop operation initiated by stop (NXPlayer) has completed.
+This method is called when the stop operation initiated by stop (NXPlayer) has been completed.
 
 **Parameters**
 
@@ -4799,7 +4799,7 @@ The player has finished downloading the content.
 
 #### (void) nexPlayerDidReachEndOfContent: (NXPlayer ∗ )nxplayer
 
-Playback has completed successfully up to the end of content.
+Playback has been completed successfully up to the end of content.
 
 If playback was started with autoPlay:YES, the player will automatically be stopped when this event occurs. Otherwise, it is necessary to stop playback by calling
 
@@ -4967,7 +4967,7 @@ Delegate interface that defines the methods that will be called when an encrypti
 #### (NSData ∗ ) nexPlayer: (NXPlayer ∗ )nxplayergetKeyExtForURLString:(NSString ∗ )URLStringresult:(BOOL ∗ ) pResult
 
 This method is called for encryption key retrieval from the NexPlayer for descrambling.
-
+f
 **Parameters**
 
 | Name  | Description  | 
@@ -4984,7 +4984,7 @@ NSData object that contains encryption key information if successful .nil otherw
 
 Provides a view in which NexPlayer video output can be displayed, creates an associated NXPlayer object, and binds it to the view.
 
-This is similar to NXPlayerView, except that NXPlayerView scales the video to maintain the aspect ratio, and handles resizing and rotation, where as NXPlayerRenderView simply stretches the video to fill the view.
+This is similar to NXPlayerView, except that NXPlayerView scales the video to maintain the aspect ratio, and handles resizing and rotation, whereas NXPlayerRenderView simply stretches the video to fill the view.
 
 This is the recommended way to render video with NexPlayer if you wish to calculate scaling values yourself.
 
@@ -5340,7 +5340,7 @@ There is only one object of this class, and it is accessed using:
 NXSDKVersion *version = [NXSDKVersion sharedInstance];
 ```
 
-Attempts to call alloc on this class oriniton instances of it will fail.
+Attempts to call alloc on this class or in it on instances of it will fail.
 
 The NXSDKVersion instance has properties describing the current version. The recommended method of displaying the current version at build time is as follows:
 
@@ -5634,7 +5634,7 @@ The properties in this interface define the different details of a custom tag in
 
 #### (BOOL) isPicture [read] , [nonatomic] , [assign]
 
-This property checks whether the current tag contains any picture data and if they are accessible through thedata property.
+This property checks whether the current tag contains any picture data and if they are accessible through the data property.
 
 If YES, the picture data format is in mimeType property and the data property contains the binary data of
 the image. If NO, the tag only includes text data and is accessible through text property.
